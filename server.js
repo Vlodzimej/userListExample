@@ -1,40 +1,34 @@
 const { join } = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
-
-// TODO users to data.js
-let users = [
-  {
-    //TODO id
-    firstName: 'Pavel',
-    secondName: 'Efimov',
-    email: 'test@gmail.com'
-  }
-];
+const data = require('./data');
 
 const app = express();
+
+let users = data.users;
 
 app.use(bodyParser());
 
 app.use(express.static(join(__dirname, 'dist')));
 
 app.get('/', (req, res) => {
-  res.sendFile(join(__dirname, 'dist', 'index.html'));
+    res.sendFile(join(__dirname, 'dist', 'index.html'));
 });
 
 app.get('/users', (req, res) => {
-  res.send(users);
+    res.send(users);
 });
 
 app.post('/user', (req, res) => {
-  users.push(req.body);
+    users.push(req.body);
 
-  res.sendStatus(200);
+    res.sendStatus(200);
 });
 
 app.delete('/user', (req, res) => {
-  // TODO make something
-  res.sendStatus(200);
+    console.log('req', req.query.id);
+    users = users.filter(user => user.id !== req.query.id);
+    res.sendStatus(200);
 });
 
 app.listen(3000, () => console.log('port 3000'));

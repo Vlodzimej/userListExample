@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import Form from './Form';
 import UsersList from './UsersList';
@@ -6,43 +6,43 @@ import UsersList from './UsersList';
 import { getUsers, deleteUser } from 'source';
 
 import { showError } from 'utils';
+import '../css/style.css';
 
-class App extends Component {
-  state = {
-    users: []
-  };
+const App = () => {
+    const [users, setUsers] = useState([]);
 
-  updateUsersList = () => {
-    getUsers()
-      .then(({ data }) => this.setState({ users: data }))
-      .catch(showError);
-  };
+    useEffect(() => {
+        (async () => {
+            let result = await getUsers()
+                .then(response => response.data)
+                .catch(showError);
+            setUsers(result);
+        })();
+    }, []);
 
-  deleteUser = firstName => () => {
-    deleteUser(firstName)
-      .then(() => {
-        this.updateUsersList();
-      })
-      .catch(showError);
-  };
+    const updateUsersList = () => {
+        getUsers()
+            .then(({ data }) => setUsers([...data]))
+            .catch(showError);
+    };
 
-  componentDidMount() {
-    getUsers()
-      .then(({ data }) => this.setState({ users: data }))
-      .catch(showError);
-  }
+    const handleDeleteUser = id => () => {
+        deleteUser(id)
+            .then(() => {
+                updateUsersList();
+            })
+            .catch(showError);
+    };
 
-  render() {
-    const { updateUsersList, deleteUser } = this;
-    const { users } = this.state;
-
+    //const { updateUsersList, deleteUser } = this;
+    //const { users } = this.state;
+    console.log('users', users);
     return (
-      <div>
-        <UsersList data={users} deleteUser={deleteUser} />
-        <Form updateUsersList={updateUsersList} />
-      </div>
+        <div>
+            <UsersList data={users} deleteUser={handleDeleteUser} />
+            <Form updateUsersList={updateUsersList} />
+        </div>
     );
-  }
-}
+};
 
 export default App;
