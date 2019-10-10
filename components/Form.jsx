@@ -52,7 +52,7 @@ const Form = props => {
                     className="input-container__field"
                 />
             </label>
-            <button className="form-container__submit">Сохранить</button>
+            <button className="form-container__button">Сохранить</button>
         </form>
     );
 };

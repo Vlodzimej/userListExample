@@ -6,5 +6,5 @@ const getUsers = () => Axios.get('/users');
 const createUser = user =>
     Axios.post('/user', { ...user, id: GuidGenerator() });
 const deleteUser = id => Axios.delete('/user', { params: { id } });
-
-export { getUsers, createUser, deleteUser };
+const editUser = user => Axios.put('/user', { params: user});
+export { getUsers, createUser, deleteUser, editUser };
