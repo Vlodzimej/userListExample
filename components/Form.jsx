@@ -27,20 +27,32 @@ const Form = props => {
     };
 
     return (
-        <form onSubmit={onSubmit}>
-            <label>
-                Имя
-                <input type="text" onChange={changeValue('firstName')} />
+        <form onSubmit={onSubmit} className="form-container">
+            <label className="input-container">
+                <span className="input-container__name">Имя</span>
+                <input
+                    type="text"
+                    onChange={changeValue('firstName')}
+                    className="input-container__field"
+                />
             </label>
-            <label>
-                Фамилия
-                <input type="text" onChange={changeValue('secondName')} />
+            <label className="input-container">
+                <span className="input-container__name">Фамилия</span>
+                <input
+                    type="text"
+                    onChange={changeValue('secondName')}
+                    className="input-container__field"
+                />
             </label>
-            <label>
-                Email
-                <input type="email" onChange={changeValue('email')} />
+            <label className="input-container">
+                <span className="input-container__name">Email</span>
+                <input
+                    type="email"
+                    onChange={changeValue('email')}
+                    className="input-container__field"
+                />
             </label>
-            <button>Сохранить</button>
+            <button className="form-container__submit">Сохранить</button>
         </form>
     );
 };

@@ -38,9 +38,9 @@ const App = () => {
     //const { users } = this.state;
     console.log('users', users);
     return (
-        <div>
-            <UsersList data={users} deleteUser={handleDeleteUser} />
+        <div className="container">
             <Form updateUsersList={updateUsersList} />
+            <UsersList data={users} deleteUser={handleDeleteUser} />
         </div>
     );
 };

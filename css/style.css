@@ -34,13 +34,86 @@ body,
 
 .container {
     display: flex;
+    width: 100%;
+    align-items: center;
+    flex-direction: column;
 }
 
-.list {
+.form-container {
     display: flex;
-    
+    flex-direction: column;
+    margin: 8px;
+}
+.input-container {
+    display: flex;
+    justify-content: space-between;
+    margin: 4px;
+}
+.input-container__name {
+    display: block;
+    margin-right: 8px;
+}
+.input-container__field {
+    display: block;
+    border: none;
+    border-radius: 4px;
+    box-shadow: 0 0px 2px 0px black;
+}
+.input-container__field:focus {
+    outline: 0;
+    box-shadow: 0 0px 3px 2px darkslategrey;
+}
+.form-container__submit {
+    border: 0;
+    margin: 8px;
+    padding: 4px;
+    border-radius: 4px;
+    box-shadow: 0 1px 4px 0px black;
+    cursor: pointer;
+    background-color: #fff;
+}
+.form-container__submit:focus {
+    outline: 0;
+}
+.form-container__submit:active {
+    padding: 3px;
+    margin: 9px;
+    box-shadow: 0 0px 2px 0px black;
+}
+.list-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    list-style-type: none;
 }
 
-.list-item__string {
-    margin: 4px;
+.list-item {
+    box-shadow: 0 0px 2px 0px black;
+    border-radius: 4px;
+    padding: 4px;
+    margin: 8px;
+    flex-basis: 30%;
+}
+
+.list-item__divider {
+    border-bottom: solid 1px lightgrey;
+    width: 100%;
+}
+
+.list-item__button {
+    border: 0;
+    margin: 8px;
+    padding: 4px;
+    border-radius: 4px;
+    box-shadow: 0 1px 4px 0px black;
+    cursor: pointer;
+    background-color: #fff;
+}
+.list-item__button:focus {
+    outline: 0;
+}
+.list-item__button:active {
+    padding: 3px;
+    margin: 9px;
+    box-shadow: 0 0px 2px 0px black;
 }
