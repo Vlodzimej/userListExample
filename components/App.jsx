@@ -43,9 +43,6 @@ const App = () => {
             .catch(showError);
     };
 
-    //const { updateUsersList, deleteUser } = this;
-    //const { users } = this.state;
-    console.log('users', users);
     return (
         <div className="container">
             <Form updateUsersList={updateUsersList} />

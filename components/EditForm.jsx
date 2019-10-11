@@ -1,7 +1,5 @@
 import React, { Fragment, useState, useEffect } from 'react';
 
-import editUser from 'source';
-
 const EditForm = ({ data, editUser }) => {
     const [user, setUser] = useState(null);
 
