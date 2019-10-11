@@ -21,12 +21,21 @@ app.get('/users', (req, res) => {
 
 app.post('/user', (req, res) => {
     users.push(req.body);
-
     res.sendStatus(200);
 });
 
+app.put('/user', (req, res) => {
+    const editedUser = req.body.params;
+    const userIndex = users.findIndex(user => user.id === editedUser.id);
+    if (userIndex > -1) {
+        users[userIndex] = editedUser;
+        res.sendStatus(200);
+    } else {
+        res.sendStatus(204);
+    }
+});
+
 app.delete('/user', (req, res) => {
-    console.log('req', req.query.id);
     users = users.filter(user => user.id !== req.query.id);
     res.sendStatus(200);
 });

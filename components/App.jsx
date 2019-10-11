@@ -34,13 +34,13 @@ const App = () => {
             .catch(showError);
     };
 
-    const handleEditUser = user => () => {
+    const handleEditUser = user => {
         console.log('edit')
         editUser(user)
             .then(() => {
                 updateUsersList();
             })
-            .cath(showError);
+            .catch(showError);
     };
 
     //const { updateUsersList, deleteUser } = this;
